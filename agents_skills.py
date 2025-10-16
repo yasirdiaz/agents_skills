@@ -1,4 +1,4 @@
-nimport streamlit as st
+import streamlit as st
 import google.generativeai as genai
 import json
 from twilio.rest import Client
@@ -191,3 +191,4 @@ if user_input:
     # 4. Add the final bot response to history
 
     st.session_state.messages.append({"role": "assistant", "content": final_response})
+
