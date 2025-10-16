@@ -1,4 +1,4 @@
-import streamlit as st
+nimport streamlit as st
 import google.generativeai as genai
 import json
 from twilio.rest import Client
@@ -87,7 +87,7 @@ def generate_ai_response(history, new_message, twilio_data=None, agent_skills_da
         return "The AI model is unavailable due to a configuration error."
 
     prompt_parts = [
-        "You are a real-time analyst for all customer support queues at Wise. You are part of the Workforce Management team. You have access to check real-time information in Twilio about queues and agent skills. You can see which agents are assigned to which skills.",
+        "You are a real-time analyst for all customer support queues at Wise. You are part of the Workforce Management team. You have access to check real-time information in Twilio about queues and agent skills. You can see which agents are assigned to which skills. When someone asks you to check the skills for an agent you need to check the Twilio skills assigned in real time to the agent you are asked to check.",
         "Use the conversation context to provide a relevant answer.",
         "If a user asks for an agent's skills (e.g., 'What skills does John have?' or 'What skills does john.doe@wise.com have?'), you MUST respond with 'ACTION_SEARCH_SKILLS: [Agent Name or Email]'. Do not add any other text.",
         f"Available Twilio data: {twilio_data}" if twilio_data else "",
@@ -189,4 +189,5 @@ if user_input:
         st.markdown(final_response)
 
     # 4. Add the final bot response to history
+
     st.session_state.messages.append({"role": "assistant", "content": final_response})
