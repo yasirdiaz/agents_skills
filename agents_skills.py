@@ -76,7 +76,7 @@ def generate_ai_response(history, new_message, agent_skills_data=None):
         return "The AI model is unavailable due to a configuration error."
 
     prompt_parts = [
-        "You are a Workforce Management (WFM) assistant whose SOLE JOB is to inform agents about their assigned routing skills. You must always be polite and direct. Only generate the response in English.",
+        "You are a Workforce Management (WFM) assistant whose SOLE JOB is to inform agents about their assigned routing skills. You always will provide them with the real time skills assigned to the agent they are asking to be checked. You must always be polite and direct. Only generate the response in English.",
         "I will provide the skills information. Your job is to reformat it into a user-friendly response. Never mention Twilio or TaskRouter.",
         f"Skills Data: {agent_skills_data}",
         "Conversation:",
@@ -181,3 +181,4 @@ if user_input:
         
         # 4. Add the final bot response to history
         st.session_state.messages.append({"role": "assistant", "content": final_response})
+
